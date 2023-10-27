@@ -38,4 +38,20 @@ https://www.youtube.com/watch?v=Qoi-5xp08tY&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEf
 ```bash
 npm i react-router-dom
 npm run dev
+git add .
+git commit -m "..."
+git push
 ```
+
+## The New Post Form - React on Rails 7 Part 4
+
+https://www.youtube.com/watch?v=XeoIWqgLqZE&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=4
+
+```bash
+git fetch origin
+git checkout 5-new-post-form
+```
+
+## Editing Posts - React on Rails 7 Part 5
+
+https://www.youtube.com/watch?v=tMOmoANzGtA&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=5
