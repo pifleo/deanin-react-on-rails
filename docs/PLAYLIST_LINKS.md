@@ -5,3 +5,5 @@
 - Tuto repo: https://github.com/Deanout/rails_react_app
 - React app: http://127.0.0.1:5173
 - Rails app: http://127.0.0.1:3000
+
+https://www.youtube.com/watch?v=tMOmoANzGtA&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=5
