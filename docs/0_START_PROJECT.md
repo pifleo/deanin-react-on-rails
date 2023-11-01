@@ -43,15 +43,27 @@ git commit -m "..."
 git push
 ```
 
-## The New Post Form - React on Rails 7 Part 4
+## ...4-8
 
 https://www.youtube.com/watch?v=XeoIWqgLqZE&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=4
 
+## Adding Jest Testing - React on Rails Part 9
+
+https://www.youtube.com/watch?v=BrGDg7JLspA&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=9
+
 ```bash
-git fetch origin
-git checkout 5-new-post-form
+cd client/
+npm install --save-dev jest @testing-library/jest-dom @testing-library/react @testing-library/user-event babel-jest @babel/preset-env @babel/preset-react vite-plugin-testing babel-plugin-transform-import-meta jest-environment-jsdom eslint-plugin-jest jest-fetch-mock history
+npm run test
 ```
 
-## Editing Posts - React on Rails 7 Part 5
+## Testing the Routes Component - React on Rails Part 10
 
-https://www.youtube.com/watch?v=tMOmoANzGtA&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=5
+
+## Jest Code Coverage in React on Rails Part 11-12
+
+https://www.youtube.com/watch?v=g9iLwLM2Fc8&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=11
+
+```bash
+npm run coverage
+```
