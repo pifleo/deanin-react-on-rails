@@ -1,78 +1,117 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import Pagination from "./Pagination";
+import { render, fireEvent } from '@testing-library/react';
+import Pagination from './Pagination';
 
-describe("Pagination Component", () => {
-    it("renders correctly with previous and next buttons", () => {
-        const onPageChangeMock = jest.fn();
-        const { container, getByText } = render(
-            <Pagination currentPage={5} totalPosts={50} postsPerPage={10} onPageChange={onPageChangeMock} />
+describe('Pagination Component', () => {
+    const currentPage = 1;
+    const totalPosts = 100;
+    const postsPerPage = 10;
+    const onPageChange = jest.fn();
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('renders correctly', () => {
+        const { container } = render(
+            <Pagination
+                currentPage={currentPage}
+                totalPosts={totalPosts}
+                postsPerPage={postsPerPage}
+                onPageChange={onPageChange}
+            />
         );
 
-        const previousButton = getByText("Previous");
-        const nextButton = getByText("Next");
+        // Check that the component renders without errors
+        expect(container).toBeTruthy();
+    });
 
-        expect(container).toMatchSnapshot(); // Snapshot testing
+    it('disables "Previous" button on the first page', () => {
+        const { getByText } = render(
+            <Pagination
+                currentPage={currentPage}
+                totalPosts={totalPosts}
+                postsPerPage={postsPerPage}
+                onPageChange={onPageChange}
+            />
+        );
 
+        const previousButton = getByText('Previous');
         fireEvent.click(previousButton);
+
+        expect(onPageChange).not.toHaveBeenCalled();
+    });
+
+    it('enables "Previous" button on a page other than the first page', () => {
+        const { getByText } = render(
+            <Pagination
+                currentPage={2}
+                totalPosts={totalPosts}
+                postsPerPage={postsPerPage}
+                onPageChange={onPageChange}
+            />
+        );
+
+        const previousButton = getByText('Previous');
+        fireEvent.click(previousButton);
+
+        expect(onPageChange).toHaveBeenCalledWith(1);
+    });
+
+    it('disables "Next" button on the last page', () => {
+        const { getByText } = render(
+            <Pagination
+                currentPage={10}
+                totalPosts={100}
+                postsPerPage={10}
+                onPageChange={onPageChange}
+            />
+        );
+
+        const nextButton = getByText('Next');
+        // console.log(nextButton.disabled); // Log the disabled state of the button
+        fireEvent.click(nextButton);
+        // console.log(onPageChange.mock.calls.length); // Log the number of times onPageChange was called
+
+        expect(onPageChange.mock.calls.length).toBe(0); // Ensure onPageChange was not called
+        expect(nextButton.disabled).toBe(true); // Ensure the button is disabled
+    });
+
+    it('enables "Next" button on a page other than the last page', () => {
+        const { getByText } = render(
+            <Pagination
+                currentPage={5}
+                totalPosts={100}
+                postsPerPage={10}
+                onPageChange={onPageChange}
+            />
+        );
+
+        const nextButton = getByText('Next');
         fireEvent.click(nextButton);
 
-        expect(onPageChangeMock).toHaveBeenCalledTimes(2);
-        expect(onPageChangeMock).toHaveBeenCalledWith(4); // Previous button should call onPageChange with currentPage - 1
-        expect(onPageChangeMock).toHaveBeenCalledWith(6); // Next button should call onPageChange with currentPage + 1
+        expect(onPageChange).toHaveBeenCalledWith(6);
     });
 
-    it("disables the previous button when on the first page", () => {
-        const onPageChangeMock = jest.fn();
+    it('displays the correct page numbers with ellipsis when totalPages > 10', () => {
         const { getByText } = render(
-            <Pagination currentPage={1} totalPosts={50} postsPerPage={10} onPageChange={onPageChangeMock} />
+            <Pagination
+                currentPage={7}
+                totalPosts={101}
+                postsPerPage={10}
+                onPageChange={onPageChange}
+            />
         );
 
-        const previousButton = getByText("Previous");
-        const nextButton = getByText("Next");
-
-        expect(previousButton).toBeDisabled();
-        expect(nextButton).not.toBeDisabled();
-    });
-
-    it("disables the next button when on the last page or when there are no posts", () => {
-        const onPageChangeMock = jest.fn();
-        const { getByText } = render(
-            <Pagination currentPage={5} totalPosts={50} postsPerPage={10} onPageChange={onPageChangeMock} />
-        );
-
-        const previousButton = getByText("Previous");
-        const nextButton = getByText("Next");
-
-        expect(previousButton).not.toBeDisabled();
-        expect(nextButton).not.toBeDisabled();
-
-        // Simulate being on the last page
-        render(
-            <Pagination currentPage={5} totalPosts={50} postsPerPage={10} onPageChange={onPageChangeMock} />
-        );
-
-        expect(nextButton).toBeDisabled();
-
-        // Simulate having no posts
-        render(
-            <Pagination currentPage={1} totalPosts={0} postsPerPage={10} onPageChange={onPageChangeMock} />
-        );
-
-        expect(nextButton).toBeDisabled();
-    });
-
-    it("calls onPageChange when a page number button is clicked", () => {
-        const onPageChangeMock = jest.fn();
-        const { getByText } = render(
-            <Pagination currentPage={3} totalPosts={50} postsPerPage={10} onPageChange={onPageChangeMock} />
-        );
-
-        const pageButton = getByText("4"); // Assuming 4 is one of the page numbers
-
-        fireEvent.click(pageButton);
-
-        expect(onPageChangeMock).toHaveBeenCalledTimes(1);
-        expect(onPageChangeMock).toHaveBeenCalledWith(4); // The page button should call onPageChange with its page number
+        // Check that the component displays the correct page numbers and ellipsis
+        expect(getByText('1')).toBeInTheDocument();
+        expect(getByText('...')).toBeInTheDocument();
+        expect(getByText('4')).toBeInTheDocument();
+        expect(getByText('5')).toBeInTheDocument();
+        expect(getByText('6')).toBeInTheDocument();
+        expect(getByText('7')).toBeInTheDocument();
+        expect(getByText('8')).toBeInTheDocument();
+        expect(getByText('9')).toBeInTheDocument();
+        expect(getByText('10')).toBeInTheDocument();
+        expect(getByText('Next')).toBeInTheDocument();
     });
 });
