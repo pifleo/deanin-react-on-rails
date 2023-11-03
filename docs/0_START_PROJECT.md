@@ -93,6 +93,8 @@ rails db:migrate
 
 Searching with React on Rails Part 25
 https://www.youtube.com/watch?v=Q497xlP-hpU&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=25
+Adding a Searchbar to React on Rails Part 26
+https://www.youtube.com/watch?v=GZxz8jTxh4s&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=26
 
  ```bash
  rails g controller Api::V1::Search posts
