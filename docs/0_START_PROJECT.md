@@ -100,10 +100,12 @@ https://www.youtube.com/watch?v=GZxz8jTxh4s&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEf
  rails g controller Api::V1::Search posts
  ```
 
-## Video 27
+## Video 27-28
 
 Kaminari Pagination Setup for React on Rails Part 27
 https://www.youtube.com/watch?v=ANbQwUB--qw&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=27
+The Pagination Component in React on Rails Part 28
+https://www.youtube.com/watch?v=NOKbOdYbO8I&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=28
 
 ```bash
 bundle add kaminari
