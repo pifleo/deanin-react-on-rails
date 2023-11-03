@@ -99,3 +99,12 @@ https://www.youtube.com/watch?v=GZxz8jTxh4s&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEf
  ```bash
  rails g controller Api::V1::Search posts
  ```
+
+## Video 27
+
+Kaminari Pagination Setup for React on Rails Part 27
+https://www.youtube.com/watch?v=ANbQwUB--qw&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=27
+
+```bash
+bundle add kaminari
+```
