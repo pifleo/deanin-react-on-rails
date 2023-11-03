@@ -67,3 +67,11 @@ https://www.youtube.com/watch?v=g9iLwLM2Fc8&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEf
 ```bash
 npm run coverage
 ```
+
+## Video 19
+
+
+```bash
+rails active_storage:install
+rails db:migrate
+```
