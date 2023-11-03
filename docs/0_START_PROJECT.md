@@ -70,8 +70,21 @@ npm run coverage
 
 ## Video 19
 
-
 ```bash
 rails active_storage:install
+rails db:migrate
+```
+
+## Video 24 • Upgrade Rails
+
+Upgrading to Rails 7.1 - React on Rails Part 24
+https://www.youtube.com/watch?v=OMWzTSOlQdk&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=24
+
+We already have the Rails 7.1.1 here, so let's just try a Gemfil update
+
+```bash
+bundle update rails
+bundle update
+rails app:update
 rails db:migrate
 ```
