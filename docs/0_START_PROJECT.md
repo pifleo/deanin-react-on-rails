@@ -88,3 +88,12 @@ bundle update
 rails app:update
 rails db:migrate
 ```
+
+ ## Video 25 • Searching with React on Rails Part 25
+
+Searching with React on Rails Part 25
+https://www.youtube.com/watch?v=Q497xlP-hpU&list=PL3mtAHT_eRewtt6HPMHFB4TMxkxiEfp9N&index=25
+
+ ```bash
+ rails g controller Api::V1::Search posts
+ ```
